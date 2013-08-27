@@ -55,7 +55,7 @@
     <Compile Include="Elements\Input.cs" />
     <Compile Include="Elements\Link.cs" />
     <Compile Include="Elements\Page.cs" />
-    <Compile Include="PageObject\WebDriverExtensions.cs" />
+    <Compile Include="WebDriverExtensions.cs" />
     <Compile Include="Selectors\BaseSelector.cs" />
     <Compile Include="Selectors\CssSelector.cs" />
     <Compile Include="Selectors\IdSelector.cs" />
@@ -64,7 +64,7 @@
     <Compile Include="Selectors\JavaScriptSelector.cs" />
     <Compile Include="Selectors\NothingSelector.cs" />
     <Compile Include="Selectors\XPathSelector.cs" />
-    <Compile Include="PageObject\Site.cs" />
+    <Compile Include="Site.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
