@@ -18,7 +18,7 @@ namespace WebChauffeur
 
         protected bool VerifyUsingAbsolutePathComparison(Uri expectedUrlOfPageOnSite, Uri actualBrowserUrl) {
             if (String.Equals(expectedUrlOfPageOnSite.AbsolutePath, actualBrowserUrl.AbsolutePath, StringComparison.InvariantCultureIgnoreCase) == false) {
-                Debug.Write(String.Format("Validating Page {0} failed. The browser is not on the page. Tried to match by absolute URL. Expected page URL is {1}. Browser URL is {2}.", Name, expectedUrlOfPageOnSite, actualBrowserUrl));
+                Trace.WriteLine(String.Format("Validating Page {0} failed. The browser is not on the page. Tried to match by absolute URL. Expected page URL is {1}. Browser URL is {2}.", Name, expectedUrlOfPageOnSite, actualBrowserUrl));
                 return false;
             }
 

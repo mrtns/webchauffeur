@@ -32,7 +32,7 @@ namespace WebChauffeur
             }
 
             if (resultPageObjectElement == null) {
-                Debug.Write(String.Format("Could not find child element with name '{0}' on the current element '{1}'.", elementName, Name));
+                Trace.WriteLine(String.Format("Could not find child element with name '{0}' on the current element '{1}'.", elementName, Name));
                 return null;
             }
 
@@ -46,7 +46,7 @@ namespace WebChauffeur
             }
 
             if (browserElement == null) {
-                Debug.Write(String.Format("Element with name '{0}' exists in the page object '{1}' definition, but it was not found in the actual browser page via the driver. Driver exception: {2}", elementName, Name, browserElementSelectException == null ? String.Empty : browserElementSelectException.ToString()));
+                Trace.WriteLine(String.Format("Element with name '{0}' exists in the page object '{1}' definition, but it was not found in the actual browser page via the driver. Driver exception: {2}", elementName, Name, browserElementSelectException == null ? String.Empty : browserElementSelectException.ToString()));
                 return null;
             }
 
