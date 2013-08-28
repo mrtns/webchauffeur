@@ -18,7 +18,7 @@ namespace WebChauffeur.SpecFlow
 
         [When(@"I click the ""(.*)""")]
         public void WhenIClickTheElement(string elementName) {
-            Context.CurrentPage.FindElementByName(Context.Driver, elementName).Click(Context.Driver, Context.Site, Context.CurrentPage);
+            Context.CurrentPage.FindElementByName(elementName).GetWebElement(Context.Driver).Click();
         }
 
         [Then(@"I should see the ""(.*)"" page")]
@@ -28,7 +28,7 @@ namespace WebChauffeur.SpecFlow
 
         [Then(@"I should see the ""(.*)""")]
         public void ThenIShouldSeeThe(string elementName) {
-            Assert.That(Context.CurrentPage.FindElementByName(Context.Driver, elementName), Is.Not.Null);
+            Assert.That(Context.CurrentPage.FindElementByName(elementName).GetWebElement(Context.Driver), Is.Not.Null);
         }
     }
 }

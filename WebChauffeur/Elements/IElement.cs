@@ -9,7 +9,7 @@ namespace WebChauffeur
         string Name { get; }
         IEnumerable<IElement> Elements { get; }
 
-        Page Click(IWebDriver driver, Site currentSite, Page currentPage);
-        IElement FindElementByName(IWebDriver driver, string elementName);
+        IElement FindElementByName(string elementName);
+        IWebElement GetWebElement(IWebDriver driver);
     }
 }

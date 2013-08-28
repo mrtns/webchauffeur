@@ -21,7 +21,7 @@ namespace NUnitIntegrationTestExample.HomePageTests
 
         [Test]
         public void ItShouldContainAnAboutGoogleLink() {
-            Assert.That(_sut.FindElementByName(_driver, "About Google Link"), Is.Not.Null);
+            Assert.That(_sut.FindElementByName("About Google Link").GetWebElement(_driver), Is.Not.Null);
         }
     }
 }

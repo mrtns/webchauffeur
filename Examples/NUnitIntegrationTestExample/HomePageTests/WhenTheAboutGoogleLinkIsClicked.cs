@@ -5,17 +5,17 @@ namespace NUnitIntegrationTestExample.HomePageTests
 {
     public class WhenTheAboutGoogleLinkIsClicked : GivenTheHomePage
     {
-        private Page _aboutGooglePage;
+        private Link _aboutGoogleLink;
 
         [SetUp]
         public void When() {
-            var aboutGoogleLink = _homePage.FindElementByName(_driver, "About Google Link");
-            _aboutGooglePage = aboutGoogleLink.Click(_driver, _site, _homePage);
+            _aboutGoogleLink = _homePage.FindElementByName("About Google Link") as Link;
+            _aboutGoogleLink.GetWebElement(_driver).Click();
         }
 
         [Test]
         public void ItShouldLoadTheAboutGooglePage() {
-            Assert.That(_aboutGooglePage.VerifyThatBrowserIsOnPage(_driver), Is.True);
+            Assert.That(_site.GetPage(_aboutGoogleLink.LinksToPage).VerifyThatBrowserIsOnPage(_driver), Is.True);
         }
     }
 }

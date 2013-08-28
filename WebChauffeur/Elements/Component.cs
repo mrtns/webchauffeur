@@ -1,4 +1,4 @@
 ﻿namespace WebChauffeur
 {
-    public class Component : BaseElement {}
+    public class Component : ElementBase {}
 }

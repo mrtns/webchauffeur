@@ -10,6 +10,6 @@ namespace GoogleSitePageObjects
             new AboutPage()
         };
 
-        public GoogleSite(Uri rootUrl) : base("Bing Search", rootUrl, _pages) {}
+        public GoogleSite(Uri rootUrl) : base("Google Search", rootUrl, _pages) {}
     }
 }

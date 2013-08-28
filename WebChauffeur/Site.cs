@@ -20,7 +20,7 @@ namespace WebChauffeur
         public Page GetPage(string pageName) {
             var result = Pages.FirstOrDefault(p => String.Equals(pageName, p.Name, StringComparison.InvariantCultureIgnoreCase));
             if (result == null)
-                throw new InvalidOperationException(String.Format("Could not find page with name {0}. Pages defined: {1}.", pageName, String.Join(",", Pages.Select(p => p.Name))));
+                throw new InvalidOperationException(String.Format("Could not find Page with name '{0}' in Site '{1}'. Pages defined: {2}.", pageName, Name, String.Join(",", Pages.Select(p => p.Name))));
 
             BindPageToSite(result, RootUrl);
             return result;
