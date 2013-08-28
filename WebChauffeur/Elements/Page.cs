@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace WebChauffeur
 {
-    public class Page : BaseElement
+    public class Page : ElementBase
     {
         public string UrlRelativeToRootOfSite { get; protected set; }
         public Uri UrlOfPageOnSite { get; set; }
