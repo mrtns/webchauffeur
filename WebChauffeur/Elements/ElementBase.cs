@@ -32,7 +32,7 @@ namespace WebChauffeur
             }
 
             if (result == null) {
-                Trace.WriteLine(String.Format("Could not find child element with name '{0}' on the current element '{1}'.", elementName, Name));
+                Trace.WriteLine(String.Format("Element '{0}': searching for child element with name '{1}'. Not found.", Name, elementName));
                 return null;
             }
 
