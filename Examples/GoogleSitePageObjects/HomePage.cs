@@ -30,7 +30,7 @@ namespace GoogleSitePageObjects
                         new Link {
                             Name = "About Google Link",
                             LinksToPage = typeof(AboutPage),
-                            Selector = new XPathSelector(@"//div[@id='flrs']/a[contains(@href, 'about.html')]")
+                            Selector = new XPathSelector(@"//div[@id='fbar']//a[contains(@href, 'about.html')]")
                         }
                     }
                 }
