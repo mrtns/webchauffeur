@@ -1,22 +1,23 @@
-﻿using OpenQA.Selenium;
+﻿using FluentAutomation;
 using TechTalk.SpecFlow;
 
 namespace WebChauffeur.SpecFlow
 {
     public static class Context
     {
-        private const string DriverKey = "Driver";
         private const string SiteKey = "Site";
         private const string CurrentPageKey = "CurrentPage";
+        private const string FluentAutomationKey = "FluentAutomation";
 
-        public static IWebDriver Driver {
+        public static FluentTest FluentAutomation {
             get {
-                IWebDriver result;
-                ScenarioContext.Current.TryGetValue(DriverKey, out result);
+                FluentTest result;
+                ScenarioContext.Current.TryGetValue(FluentAutomationKey, out result);
                 return result;
             }
-            set { ScenarioContext.Current.Set(value, DriverKey); }
+            set { ScenarioContext.Current.Set(value, FluentAutomationKey );}
         }
+
 
         public static Site Site {
             get {

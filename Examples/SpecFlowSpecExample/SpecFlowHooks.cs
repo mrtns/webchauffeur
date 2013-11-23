@@ -1,6 +1,6 @@
 ﻿using System;
+using FluentAutomation;
 using GoogleSitePageObjects;
-using OpenQA.Selenium.Firefox;
 using TechTalk.SpecFlow;
 
 namespace SpecFlowSpecExample
@@ -10,13 +10,16 @@ namespace SpecFlowSpecExample
     {
         [BeforeScenario]
         public void BeforeScenario() {
-            WebChauffeur.SpecFlow.Context.Driver = new FirefoxDriver();
-            WebChauffeur.SpecFlow.Context.Site = new GoogleSite(new Uri("http://google.com"));
+            WebChauffeur.SpecFlow.Context.Site = new GoogleSite(new Uri("https://www.google.com"));
+            WebChauffeur.SpecFlow.Context.FluentAutomation = new FluentTest();
+            FluentAutomation.SeleniumWebDriver.Bootstrap();
         }
 
         [AfterScenario]
         public void AfterScenario() {
-            WebChauffeur.SpecFlow.Context.Driver.Quit();
+            WebChauffeur.SpecFlow.Context.Site.Dispose();
+            WebChauffeur.SpecFlow.Context.CurrentPage.Dispose();
+            WebChauffeur.SpecFlow.Context.FluentAutomation.Dispose();
         }
     }
 }

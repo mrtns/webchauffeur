@@ -9,7 +9,5 @@ namespace WebChauffeur
         }
 
         public string Selector { get; private set; }
-
-        public abstract IWebElement Select(IWebDriver driver);
     }
 }

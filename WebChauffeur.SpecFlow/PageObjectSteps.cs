@@ -7,18 +7,14 @@ namespace WebChauffeur.SpecFlow
     public class PageObjectSteps
     {
         [Given(@"I load the ""([^""]*)"" page")]
-        public void GivenILoadThePage(string pageName) {
-            Context.CurrentPage = Context.Site.LoadPage(Context.Driver, pageName);
-        }
-
         [When(@"I load the ""([^""]*)"" page")]
-        public void WhenILoadThePage(string pageName) {
-            GivenILoadThePage(pageName);
+        public void WhenILoadThePage(string pageName) {    
+            Context.CurrentPage = Context.Site.LoadPage(Context.FluentAutomation.I, pageName);
         }
 
         [Then(@"I should see the ""([^""]*)"" page")]
         public void ThenIShouldSeeThePage(string pageName) {
-            Assert.That(Context.Site.GetPage(pageName).VerifyThatBrowserIsOnPage(Context.Driver), Is.True);
+            Assert.That(Context.Site.GetPage(pageName).VerifyThatBrowserIsOnPage(Context.FluentAutomation.I), Is.True);
         }
     }
 
@@ -27,11 +23,14 @@ namespace WebChauffeur.SpecFlow
     {
         [Then(@"I should see the ""([^""]*)""")]
         public void ThenIShouldSeeThe(string elementName) {
-            Assert.That(Context.CurrentPage.FindElementByName(elementName).GetWebElement(Context.Driver), Is.Not.Null);
+            var pageElement = Context.CurrentPage.FindElementByName(elementName);
+            Assert.DoesNotThrow(() => Context.FluentAutomation.I.Find(pageElement.Selector.Selector)());
         }
+
         [When(@"I click the ""([^""]*)""")]
         public void WhenIClickTheElement(string elementName) {
-            Context.CurrentPage.FindElementByName(elementName).GetWebElement(Context.Driver).Click();
+            var pageElement = Context.CurrentPage.FindElementByName(elementName);
+            Context.FluentAutomation.I.Click(pageElement.Selector.Selector);
         }
     }
 }

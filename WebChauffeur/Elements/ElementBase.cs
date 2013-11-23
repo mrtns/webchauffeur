@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Web.Script.Serialization;
-using OpenQA.Selenium;
 
 namespace WebChauffeur
 {
@@ -39,20 +38,12 @@ namespace WebChauffeur
             return result;
         }
 
-        public IWebElement GetWebElement(IWebDriver driver) {
-            IWebElement result;
-            try {
-                result = Selector.Select(driver);
-            }
-            catch (Exception e) {
-                Trace.WriteLine(String.Format("The WebElement for Element with name '{0}' was not found in the actual browser page via the driver. Driver exception: {1}", Name, e));
-                throw;
-            }
-            return result;
-        }
-
         public override string ToString() {
             return new JavaScriptSerializer().Serialize(this);
+        }
+
+        public void Dispose() {
+            // do nothing
         }
     }
 }

@@ -10,7 +10,7 @@ namespace NUnitIntegrationTestExample
 
         [SetUp]
         public void Given() {
-            _site = new GoogleSite(new Uri("http://www.google.com"));
+            _site = new GoogleSite(new Uri("https://www.google.com"));
         }
     }
 }

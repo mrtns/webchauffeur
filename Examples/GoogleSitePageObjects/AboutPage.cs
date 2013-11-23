@@ -15,7 +15,7 @@ namespace GoogleSitePageObjects
                     Elements = new List<IElement> {
                         new Component {
                             Name = "Mission Statement Headline",
-                            Selector = new XPathSelector(@"//div[@id='about-mission']/blockquote")
+                            Selector = new IdSelector("#about-mission")
                         }
                     }
                 }

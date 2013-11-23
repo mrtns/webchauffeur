@@ -1,21 +1,20 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
+﻿using FluentAutomation;
+using FluentAutomation.Interfaces;
+using NUnit.Framework;
 
 namespace NUnitIntegrationTestExample
 {
-    public class UsingABrowser
+    public class UsingABrowser : FluentTest
     {
-        protected IWebDriver _driver;
+        protected INativeActionSyntaxProvider _driver { get { return base.I; } }
 
         [SetUp]
         public void Using() {
-            _driver = new FirefoxDriver();
+            FluentAutomation.SeleniumWebDriver.Bootstrap();
         }
 
         [TearDown]
         public void TearDown() {
-            _driver.Quit();
         }
     }
 }

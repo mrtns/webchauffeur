@@ -1,4 +1,5 @@
-﻿using GoogleSitePageObjects;
+﻿using System;
+using GoogleSitePageObjects;
 using NUnit.Framework;
 using WebChauffeur;
 
@@ -11,7 +12,7 @@ namespace NUnitIntegrationTestExample.HomePageTests
         [SetUp]
         public void When() {
             _sut = _site.GetPage(typeof (HomePage));
-            _driver.Navigate().GoToPage(_sut);
+            _driver.Open(_sut.UrlOfPageOnSite);
         }
 
         [Test]
@@ -21,7 +22,8 @@ namespace NUnitIntegrationTestExample.HomePageTests
 
         [Test]
         public void ItShouldContainAnAboutGoogleLink() {
-            Assert.That(_sut.FindElementByName("About Google Link").GetWebElement(_driver), Is.Not.Null);
+            var link = _sut.FindElementByName("About Google Link");
+            Assert.DoesNotThrow(() => _driver.Expect.Exists(link.Selector.Selector));
         }
     }
 }

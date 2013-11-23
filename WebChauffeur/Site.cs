@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using OpenQA.Selenium;
+using FluentAutomation.Interfaces;
 
 namespace WebChauffeur
 {
-    public class Site
+    public class Site : IDisposable
     {
         public Site(string name, Uri rootUrl, IEnumerable<Page> pages) {
             Name = name;
@@ -35,21 +35,25 @@ namespace WebChauffeur
             return result;
         }
 
-        public Page LoadPage(IWebDriver driver, string pageName) {
-            return LoadPage(driver, GetPage(pageName).GetType());
+        public Page LoadPage(INativeActionSyntaxProvider fluentAutomation, string pageName) {
+            return LoadPage(fluentAutomation, GetPage(pageName).GetType());
         }
 
-        public Page LoadPage(IWebDriver driver, Type pageType) {
+        public Page LoadPage(INativeActionSyntaxProvider fluentAutomation, Type pageType) {
             var thePage = GetPage(pageType);
-            driver.Navigate().GoToPage(thePage);
+            fluentAutomation.Open(thePage.UrlOfPageOnSite);
 
-            thePage.VerifyThatBrowserIsOnPage(driver);
+            thePage.VerifyThatBrowserIsOnPage(fluentAutomation);
 
             return thePage;
         }
 
         private static void BindPageToSite(Page page, Uri rootUrlOfSite) {
             page.UrlOfPageOnSite = new Uri(rootUrlOfSite, page.UrlRelativeToRootOfSite);
+        }
+
+        public void Dispose() {            
+            // do nothing
         }
     }
 }

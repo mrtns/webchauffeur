@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
-using OpenQA.Selenium;
+using FluentAutomation.Exceptions;
+using FluentAutomation.Interfaces;
 
 namespace WebChauffeur
 {
@@ -9,16 +9,13 @@ namespace WebChauffeur
         public string UrlRelativeToRootOfSite { get; protected set; }
         public Uri UrlOfPageOnSite { get; set; }
 
-        public bool VerifyThatBrowserIsOnPage(IWebDriver driver) {
+        public bool VerifyThatBrowserIsOnPage(INativeActionSyntaxProvider fluentAutomation) {
             var expectedUrlOfPage = UrlOfPageOnSite;
-            var actualBrowserUrl = new Uri(driver.Url);
 
-            return VerifyUsingAbsolutePathComparison(expectedUrlOfPage, actualBrowserUrl);
-        }
-
-        protected bool VerifyUsingAbsolutePathComparison(Uri expectedUrlOfPageOnSite, Uri actualBrowserUrl) {
-            if (String.Equals(expectedUrlOfPageOnSite.AbsolutePath, actualBrowserUrl.AbsolutePath, StringComparison.InvariantCultureIgnoreCase) == false) {
-                Trace.WriteLine(String.Format("Validating Page {0} failed. The browser is not on the page. Tried to match by absolute URL. Expected page URL is {1}. Browser URL is {2}.", Name, expectedUrlOfPageOnSite, actualBrowserUrl));
+            try {
+                fluentAutomation.Expect.Url(expectedUrlOfPage);
+            }
+            catch (FluentExpectFailedException) {
                 return false;
             }
 

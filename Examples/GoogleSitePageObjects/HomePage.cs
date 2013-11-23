@@ -7,19 +7,19 @@ namespace GoogleSitePageObjects
     { 
         public HomePage() {
             Name = "Home";
-            UrlRelativeToRootOfSite = "/";
+            UrlRelativeToRootOfSite = "/?gl=us";
             Elements = new List<IElement> {
                 new Component {
                     Name = "Search Form",
-                    Selector = new IdSelector("gbqf"),
+                    Selector = new IdSelector("#gbqf"),
                     Elements = new List<IElement> {
                         new Button {
                             Name = "Search",
-                            Selector = new IdSelector("gbqfba")
+                            Selector = new IdSelector("#gbqfba")
                         },
                         new Button {
                             Name = "I'm Feeling Lucky",
-                            Selector = new IdSelector("gbqfbb")
+                            Selector = new IdSelector("#gbqfbb")
                         }
                     }
                 },
@@ -30,7 +30,7 @@ namespace GoogleSitePageObjects
                         new Link {
                             Name = "About Google Link",
                             LinksToPage = typeof(AboutPage),
-                            Selector = new XPathSelector(@"//div[@id='fbar']//a[contains(@href, 'about.html')]")
+                            Selector = new CssSelector(@"#fsl a:last")
                         }
                     }
                 }
