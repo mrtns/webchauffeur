@@ -23,6 +23,10 @@ namespace WebChauffeur
         public IElement FindElementByName(string elementName) {
             var result = Elements.FirstOrDefault(e => String.Equals(e.Name, elementName, StringComparison.InvariantCultureIgnoreCase));
 
+            if (result != null) {
+                 Trace.WriteLine(String.Format("Page Element '{0}': Found child element with name '{1}'.", Name, elementName));               
+            }
+
             if (result == null) {
                 foreach (var childElement in Elements) {
                     result = childElement.FindElementByName(elementName);
@@ -32,7 +36,6 @@ namespace WebChauffeur
             }
 
             if (result == null) {
-                Trace.WriteLine(String.Format("Element '{0}': searching for child element with name '{1}'. Not found.", Name, elementName));
                 return null;
             }
 
