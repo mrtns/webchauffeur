@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using FluentAutomation.Exceptions;
 using FluentAutomation.Interfaces;
 
@@ -20,6 +21,16 @@ namespace WebChauffeur
             }
 
             return true;
+        }
+
+        public IPageElement FindElementByName(string elementName) {
+            var result = base.FindElementByName(elementName);
+
+            if (result == null) {
+                Trace.WriteLine(String.Format("Page '{0}': Child element with name '{1}' not found.", Name, elementName));
+            }
+
+            return result;
         }
     }
 }
