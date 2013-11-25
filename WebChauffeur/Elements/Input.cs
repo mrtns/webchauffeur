@@ -1,8 +1,8 @@
 ﻿namespace WebChauffeur
 {
-    public class Input : ElementBase
+    public class Input : PageElementBase
     {
-        public IElement Label { get; set; }
-        public IElement InputElement { get; set; }
+        public IPageElement Label { get; set; }
+        public IPageElement InputPageElement { get; set; }
     }
 }

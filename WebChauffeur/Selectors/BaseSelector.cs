@@ -1,6 +1,4 @@
-﻿using OpenQA.Selenium;
-
-namespace WebChauffeur
+﻿namespace WebChauffeur
 {
     public abstract class BaseSelector : ISelector
     {

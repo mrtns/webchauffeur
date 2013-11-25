@@ -61,10 +61,10 @@
     <Compile Include="..\SharedAssemblyVersion.cs">
       <Link>Properties\SharedAssemblyVersion.cs</Link>
     </Compile>
-    <Compile Include="Elements\ElementBase.cs" />
+    <Compile Include="Elements\PageElementBase.cs" />
     <Compile Include="Elements\Button.cs" />
     <Compile Include="Elements\Component.cs" />
-    <Compile Include="Elements\IElement.cs" />
+    <Compile Include="Elements\IPageElement.cs" />
     <Compile Include="Elements\Input.cs" />
     <Compile Include="Elements\Link.cs" />
     <Compile Include="Elements\Page.cs" />

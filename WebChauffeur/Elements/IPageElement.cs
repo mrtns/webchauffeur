@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace WebChauffeur
 {
-    public interface IElement : IDisposable
+    public interface IPageElement : IDisposable
     {
         ISelector Selector { get; }
         string Name { get; }
-        IEnumerable<IElement> Elements { get; }
+        IEnumerable<IPageElement> Elements { get; }
 
-        IElement FindElementByName(string elementName);
+        IPageElement FindElementByName(string elementName);
     }
 }

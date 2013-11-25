@@ -4,7 +4,7 @@ using FluentAutomation.Interfaces;
 
 namespace WebChauffeur
 {
-    public class Page : ElementBase
+    public class Page : PageElementBase
     {
         public string UrlRelativeToRootOfSite { get; protected set; }
         public Uri UrlOfPageOnSite { get; set; }

@@ -8,11 +8,11 @@ namespace GoogleSitePageObjects
         public HomePage() {
             Name = "Home";
             UrlRelativeToRootOfSite = "/?gl=us";
-            Elements = new List<IElement> {
+            Elements = new List<IPageElement> {
                 new Component {
                     Name = "Search Form",
                     Selector = new IdSelector("#gbqf"),
-                    Elements = new List<IElement> {
+                    Elements = new List<IPageElement> {
                         new Button {
                             Name = "Search",
                             Selector = new IdSelector("#gbqfba")
@@ -26,7 +26,7 @@ namespace GoogleSitePageObjects
                 new Component {
                     Name = "Footer",
                     Selector = new IdSelector("footer"),
-                    Elements = new List<IElement> {
+                    Elements = new List<IPageElement> {
                         new Link {
                             Name = "About Google Link",
                             LinksToPage = typeof(AboutPage),

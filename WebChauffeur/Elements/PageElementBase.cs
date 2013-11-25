@@ -6,20 +6,20 @@ using System.Web.Script.Serialization;
 
 namespace WebChauffeur
 {
-    public class ElementBase : IElement
+    public class PageElementBase : IPageElement
     {
-        protected ElementBase() {
+        protected PageElementBase() {
             Selector = new NothingSelector();
-            Elements = Enumerable.Empty<IElement>();
+            Elements = Enumerable.Empty<IPageElement>();
         }
 
         public ISelector Selector { get; set; }
 
         public string Name { get; set; }
 
-        public IEnumerable<IElement> Elements { get; set; }
+        public IEnumerable<IPageElement> Elements { get; set; }
 
-        public IElement FindElementByName(string elementName) {
+        public IPageElement FindElementByName(string elementName) {
             var result = Elements.FirstOrDefault(e => String.Equals(e.Name, elementName, StringComparison.InvariantCultureIgnoreCase));
 
             if (result == null) {
