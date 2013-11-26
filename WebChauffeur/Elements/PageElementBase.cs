@@ -7,13 +7,14 @@ using FluentAutomation.Interfaces;
 
 namespace WebChauffeur
 {
-    public class PageElementBase : IPageElement, IElementAdapter
+    public class PageElementBase : IPageElement
     {
         protected PageElementBase() {
             ElementSelector = new NothingSelector();
             Elements = Enumerable.Empty<IPageElement>();
         }
 
+        #region IPageElement
         public ISelector ElementSelector { get; set; }
 
         public string Name { get; set; }
@@ -45,18 +46,29 @@ namespace WebChauffeur
         public IElement GetWebElement(INativeActionSyntaxProvider fluentAutomationWebDriver) {
             return fluentAutomationWebDriver.Find(ElementSelector.Selector)();
         }
+        #endregion
 
+        #region Object
         public override string ToString() {
             return new JavaScriptSerializer().Serialize(this);
         }
+        #endregion
 
+        #region IDisposable
         public void Dispose() {
             // do nothing
         }
+        #endregion
 
         #region IElementAdapter
         public string GetValue(INativeActionSyntaxProvider fluentAutomationWebDriver) {
             return GetWebElement(fluentAutomationWebDriver).Value;
+        }
+        #endregion
+
+        #region IElementActionAdapter
+        public void Click(INativeActionSyntaxProvider fluentAutomationWebDriver) {
+            fluentAutomationWebDriver.Click(() => GetWebElement(fluentAutomationWebDriver));
         }
         #endregion
     }

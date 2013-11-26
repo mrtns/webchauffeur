@@ -29,8 +29,7 @@ namespace WebChauffeur.SpecFlow
 
         [When(@"I click the ""([^""]*)""")]
         public void WhenIClickTheElement(string elementName) {
-            var pageElement = Context.CurrentPage.FindElementByName(elementName);
-            Context.FluentAutomation.I.Click(pageElement.ElementSelector.Selector);
+            Context.CurrentPage.FindElementByName(elementName).Click(Context.FluentAutomation.I);
         }
     }
 }

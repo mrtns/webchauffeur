@@ -4,7 +4,7 @@ using FluentAutomation.Interfaces;
 
 namespace WebChauffeur
 {
-    public interface IPageElement : IDisposable
+    public interface IPageElement : IElementAdapter, IElementActionAdapter, IDisposable
     {
         ISelector ElementSelector { get; }
         string Name { get; }
@@ -18,5 +18,10 @@ namespace WebChauffeur
     public interface IElementAdapter
     {
         string GetValue(INativeActionSyntaxProvider fluentAutomationWebDriver);
+    }
+
+    public interface IElementActionAdapter
+    {
+        void Click(INativeActionSyntaxProvider fluentAutomationWebDriver);
     }
 }
