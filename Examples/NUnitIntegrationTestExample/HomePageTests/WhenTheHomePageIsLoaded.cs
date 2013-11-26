@@ -23,7 +23,7 @@ namespace NUnitIntegrationTestExample.HomePageTests
         [Test]
         public void ItShouldContainAnAboutGoogleLink() {
             var link = _sut.FindElementByName("About Google Link");
-            Assert.DoesNotThrow(() => _driver.Expect.Exists(link.Selector.Selector));
+            Assert.DoesNotThrow(() => _driver.Expect.Exists(link.ElementSelector.Selector));
         }
     }
 }

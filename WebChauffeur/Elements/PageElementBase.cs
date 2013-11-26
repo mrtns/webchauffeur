@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Web.Script.Serialization;
+using FluentAutomation.Interfaces;
 
 namespace WebChauffeur
 {
     public class PageElementBase : IPageElement
     {
         protected PageElementBase() {
-            Selector = new NothingSelector();
+            ElementSelector = new NothingSelector();
             Elements = Enumerable.Empty<IPageElement>();
         }
 
-        public ISelector Selector { get; set; }
+        public ISelector ElementSelector { get; set; }
 
         public string Name { get; set; }
 
@@ -23,7 +24,7 @@ namespace WebChauffeur
             var result = Elements.FirstOrDefault(e => String.Equals(e.Name, elementName, StringComparison.InvariantCultureIgnoreCase));
 
             if (result != null) {
-                 Trace.WriteLine(String.Format("Page Element '{0}': Found child element with name '{1}'.", Name, elementName));               
+                Trace.WriteLine(String.Format("Page Element '{0}': Found child element with name '{1}'.", Name, elementName));
             }
 
             if (result == null) {
@@ -39,6 +40,10 @@ namespace WebChauffeur
             }
 
             return result;
+        }
+
+        public IElement GetWebElement(INativeActionSyntaxProvider fluentAutomationWebDriver) {
+            return fluentAutomationWebDriver.Find(ElementSelector.Selector)();
         }
 
         public override string ToString() {

@@ -24,13 +24,13 @@ namespace WebChauffeur.SpecFlow
         [Then(@"I should see the ""([^""]*)""")]
         public void ThenIShouldSeeThe(string elementName) {
             var pageElement = Context.CurrentPage.FindElementByName(elementName);
-            Assert.DoesNotThrow(() => Context.FluentAutomation.I.Find(pageElement.Selector.Selector)());
+            Assert.DoesNotThrow(() => pageElement.GetWebElement(Context.FluentAutomation.I));
         }
 
         [When(@"I click the ""([^""]*)""")]
         public void WhenIClickTheElement(string elementName) {
             var pageElement = Context.CurrentPage.FindElementByName(elementName);
-            Context.FluentAutomation.I.Click(pageElement.Selector.Selector);
+            Context.FluentAutomation.I.Click(pageElement.ElementSelector.Selector);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace WebChauffeur
             return true;
         }
 
-        public IPageElement FindElementByName(string elementName) {
+        public new IPageElement FindElementByName(string elementName) {
             var result = base.FindElementByName(elementName);
 
             if (result == null) {

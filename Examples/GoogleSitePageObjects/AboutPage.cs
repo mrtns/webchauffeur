@@ -11,11 +11,11 @@ namespace GoogleSitePageObjects
             Elements = new List<IPageElement> {
                 new Component {
                     Name = "Summary",
-                    Selector = new IdSelector("about-mission"),
+                    ElementSelector = new IdSelector("about-mission"),
                     Elements = new List<IPageElement> {
                         new Component {
                             Name = "Mission Statement Headline",
-                            Selector = new IdSelector("#about-mission")
+                            ElementSelector = new IdSelector("#about-mission")
                         }
                     }
                 }

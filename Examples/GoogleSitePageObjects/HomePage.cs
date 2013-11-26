@@ -11,26 +11,26 @@ namespace GoogleSitePageObjects
             Elements = new List<IPageElement> {
                 new Component {
                     Name = "Search Form",
-                    Selector = new IdSelector("#gbqf"),
+                    ElementSelector = new IdSelector("#gbqf"),
                     Elements = new List<IPageElement> {
                         new Button {
                             Name = "Search",
-                            Selector = new IdSelector("#gbqfba")
+                            ElementSelector = new IdSelector("#gbqfba")
                         },
                         new Button {
                             Name = "I'm Feeling Lucky",
-                            Selector = new IdSelector("#gbqfbb")
+                            ElementSelector = new IdSelector("#gbqfbb")
                         }
                     }
                 },
                 new Component {
                     Name = "Footer",
-                    Selector = new IdSelector("footer"),
+                    ElementSelector = new IdSelector("footer"),
                     Elements = new List<IPageElement> {
                         new Link {
                             Name = "About Google Link",
                             LinksToPage = typeof(AboutPage),
-                            Selector = new CssSelector(@"#fsl a:last")
+                            ElementSelector = new CssSelector(@"#fsl a:last")
                         }
                     }
                 }
