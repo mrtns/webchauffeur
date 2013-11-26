@@ -7,7 +7,7 @@ using FluentAutomation.Interfaces;
 
 namespace WebChauffeur
 {
-    public class PageElementBase : IPageElement
+    public class PageElementBase : IPageElement, IElementAdapter
     {
         protected PageElementBase() {
             ElementSelector = new NothingSelector();
@@ -53,5 +53,11 @@ namespace WebChauffeur
         public void Dispose() {
             // do nothing
         }
+
+        #region IElementAdapter
+        public string GetValue(INativeActionSyntaxProvider fluentAutomationWebDriver) {
+            return GetWebElement(fluentAutomationWebDriver).Value;
+        }
+        #endregion
     }
 }

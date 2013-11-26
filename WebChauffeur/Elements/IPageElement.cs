@@ -13,6 +13,10 @@ namespace WebChauffeur
         IPageElement FindElementByName(string elementName);
 
         IElement GetWebElement(INativeActionSyntaxProvider fluentAutomationWebDriver);
-        
+    }
+
+    public interface IElementAdapter
+    {
+        string GetValue(INativeActionSyntaxProvider fluentAutomationWebDriver);
     }
 }
