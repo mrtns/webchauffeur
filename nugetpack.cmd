@@ -1,0 +1,2 @@
+.nuget\nuget.exe pack WebChauffeur\WebChauffeur.csproj -IncludeReferencedProjects -OutputDirectory build\
+.nuget\nuget.exe pack WebChauffeur.SpecFlow\WebChauffeur.SpecFlow.csproj -IncludeReferencedProjects -OutputDirectory build\
