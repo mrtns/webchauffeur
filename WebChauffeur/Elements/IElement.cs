@@ -10,7 +10,6 @@ namespace WebChauffeur
         IEnumerable<IElement> Elements { get; }
 
         IElement FindElementByName(string elementName);
-        //IWebElement GetWebElement(IWebDriver driver);
         IWebElement GetWebElement();
     }
 }
