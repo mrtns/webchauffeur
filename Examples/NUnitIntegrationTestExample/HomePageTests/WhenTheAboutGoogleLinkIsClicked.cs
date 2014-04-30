@@ -10,12 +10,12 @@ namespace NUnitIntegrationTestExample.HomePageTests
         [SetUp]
         public void When() {
             _aboutGoogleLink = _homePage.FindElementByName("About Google Link") as Link;
-            _aboutGoogleLink.GetWebElement(_driver).Click();
+            _aboutGoogleLink.GetWebElement().Click();
         }
 
         [Test]
         public void ItShouldLoadTheAboutGooglePage() {
-            Assert.That(_site.GetPage(_aboutGoogleLink.LinksToPage).VerifyThatBrowserIsOnPage(_driver), Is.True);
+            Assert.That(_site.GetPage(_aboutGoogleLink.LinksToPage).VerifyThatBrowserIsOnPage(), Is.True);
         }
     }
 }

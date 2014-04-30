@@ -6,8 +6,8 @@ namespace WebChauffeur
     {
         public IdSelector(string selectorString) : base(selectorString) {}
 
-        public override IWebElement Select(IWebDriver driver) {
-            return driver.FindElement(By.Id(Selector));
+        public override IWebElement Select() {
+            return Driver.FindElement(By.Id(Selector));
         }
     }
 }

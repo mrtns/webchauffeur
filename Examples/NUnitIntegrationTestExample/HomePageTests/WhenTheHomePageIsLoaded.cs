@@ -16,12 +16,12 @@ namespace NUnitIntegrationTestExample.HomePageTests
 
         [Test]
         public void ItShouldLoadTheHomePage() {
-            Assert.That(_sut.VerifyThatBrowserIsOnPage(_driver), Is.True);
+            Assert.That(_sut.VerifyThatBrowserIsOnPage(), Is.True);
         }
 
         [Test]
         public void ItShouldContainAnAboutGoogleLink() {
-            Assert.That(_sut.FindElementByName("About Google Link").GetWebElement(_driver), Is.Not.Null);
+            Assert.That(_sut.FindElementByName("About Google Link").GetWebElement(), Is.Not.Null);
         }
     }
 }

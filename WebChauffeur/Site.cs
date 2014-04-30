@@ -35,15 +35,15 @@ namespace WebChauffeur
             return result;
         }
 
-        public Page LoadPage(IWebDriver driver, string pageName) {
-            return LoadPage(driver, GetPage(pageName).GetType());
+        public Page LoadPage(string pageName) {
+            return LoadPage(GetPage(pageName).GetType());
         }
 
-        public Page LoadPage(IWebDriver driver, Type pageType) {
+        public Page LoadPage(Type pageType) {
             var thePage = GetPage(pageType);
-            driver.Navigate().GoToPage(thePage);
+            Driver.GetInstance().Navigate().GoToPage(thePage);
 
-            thePage.VerifyThatBrowserIsOnPage(driver);
+            thePage.VerifyThatBrowserIsOnPage();
 
             return thePage;
         }
