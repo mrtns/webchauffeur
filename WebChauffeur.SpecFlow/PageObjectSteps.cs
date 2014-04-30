@@ -184,15 +184,15 @@ namespace WebChauffeur.SpecFlow
 
         [Then(@"I should see the browser page title with text([^""]+)""([^""]*)""")]
         public void ThenIShouldSeeTheBrowserPageTitleWithValue(string textComparisonType, string text)
-        {
-            var browserTitleText = Driver.GetInstance().Title;
+        {           
+            var browserTitleText = Context.CurrentPage.Title;
             AssertText(textComparisonType, browserTitleText, text);
         }
 
         [Then(@"I should see the page with text([^""]+)""([^""]*)""")]
         public void ThenIShouldSeeThePageWithText(string textComparisonType, string text)
-        {
-            var pageText = Driver.GetInstance().FindElement(By.CssSelector("body")).Text;
+        {            
+            var pageText = Context.CurrentPage.BodyText;
             AssertText(textComparisonType, pageText, text);
         }
 

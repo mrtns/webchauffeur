@@ -44,9 +44,9 @@ namespace WebChauffeur
                     }
                     break;
 
-                //TODO:  FireFox should always be default browser.  
+                // Unsupported driver type 
                 default:
-                    break;
+                    throw new NotImplementedException();                    
             }
             SetDriverDefaults();
 

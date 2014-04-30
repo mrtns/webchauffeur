@@ -61,6 +61,7 @@
     <Compile Include="Elements\Input.cs" />
     <Compile Include="Elements\Link.cs" />
     <Compile Include="Elements\Page.cs" />
+    <Compile Include="UserAgent.cs" />
     <Compile Include="WebDriverExtensions.cs" />
     <Compile Include="Selectors\BaseSelector.cs" />
     <Compile Include="Selectors\CssSelector.cs" />

@@ -8,6 +8,8 @@ namespace WebChauffeur
     {
         public string UrlRelativeToRootOfSite { get; protected set; }
         public Uri UrlOfPageOnSite { get; set; }
+        public string Title { get { return Driver.Title; } }
+        public string BodyText { get { return Driver.FindElement(By.CssSelector("body")).Text; } }
 
         public bool VerifyThatBrowserIsOnPage() {
             var expectedUrlOfPage = UrlOfPageOnSite;
@@ -34,5 +36,7 @@ namespace WebChauffeur
 
             return result;
         }
+
+        
     }
 }
