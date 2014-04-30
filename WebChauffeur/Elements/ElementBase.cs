@@ -14,6 +14,10 @@ namespace WebChauffeur
             Elements = Enumerable.Empty<IElement>();
         }
 
+        public IWebDriver Driver {
+            get { return WebChauffeur.Driver.GetInstance(); }
+        }
+
         public ISelector Selector { get; set; }
 
         public string Name { get; set; }
@@ -42,10 +46,10 @@ namespace WebChauffeur
             return result;
         }
 
-        public IWebElement GetWebElement(IWebDriver driver) {
+        public IWebElement GetWebElement() {
             IWebElement result;
             try {
-                result = Selector.Select(driver);
+                result = Selector.Select();
             }
             catch (Exception e) {
                 Trace.WriteLine(String.Format("The WebElement for Element with name '{0}' was not found in the actual browser page via the driver. Driver exception: {1}", Name, e));

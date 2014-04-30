@@ -20,7 +20,7 @@ namespace WebChauffeur.SpecFlow
             var inputElement = theElementAsInput.InputElement;
             Assert.That(inputElement, Is.Not.Null);
 
-            var inputElementWebElement = inputElement.GetWebElement(Context.Driver);
+            var inputElementWebElement = inputElement.GetWebElement();
             Assert.That(inputElementWebElement, Is.Not.Null);
 
             return inputElementWebElement;
@@ -38,7 +38,7 @@ namespace WebChauffeur.SpecFlow
             var inputElement = theElementAsInput.InputElement;
             Assert.That(inputElement, Is.Not.Null);
 
-            var inputElementWebElement = inputElement.GetWebElement(Context.Driver);
+            var inputElementWebElement = inputElement.GetWebElement();
             Assert.That(inputElementWebElement, Is.Not.Null);
 
             var inputElementWebElementAsSelect = new SelectElement(inputElementWebElement);
@@ -56,7 +56,7 @@ namespace WebChauffeur.SpecFlow
             var theElementAsButton = theElement as Button;
             if (theElementAsButton != null)
             {
-                Assert.That(theElementAsButton.GetWebElement(Context.Driver).GetAttribute("value"), Is.StringMatching(valueText));
+                Assert.That(theElementAsButton.GetWebElement().GetAttribute("value"), Is.StringMatching(valueText));
                 return;
             }
 
@@ -72,7 +72,7 @@ namespace WebChauffeur.SpecFlow
             var inputElement = theElementAsInput.InputElement;
             Assert.That(inputElement, Is.Not.Null);
 
-            var inputElementWebElement = inputElement.GetWebElement(Context.Driver);
+            var inputElementWebElement = inputElement.GetWebElement();
             Assert.That(inputElementWebElement, Is.Not.Null);
 
             var isSelect = inputElementWebElement.TagName.ToLower() == "select";
@@ -111,7 +111,7 @@ namespace WebChauffeur.SpecFlow
         public void ThenIShouldSeeTheText(string elementName, string textComparisonType, string text)
         {
             var theElement = Context.CurrentPage.FindElementByName(elementName);
-            var theElementText = theElement.GetWebElement(Context.Driver).Text;
+            var theElementText = theElement.GetWebElement().Text;
             AssertText(textComparisonType, theElementText, text);
         }
 
@@ -127,14 +127,14 @@ namespace WebChauffeur.SpecFlow
             var labelElement = theElementAsInput.Label;
             Assert.That(labelElement, Is.Not.Null);
 
-            var labelElementWebElement = labelElement.GetWebElement(Context.Driver);
+            var labelElementWebElement = labelElement.GetWebElement();
             Assert.That(labelElementWebElement, Is.Not.Null);
             Assert.That(labelElementWebElement.Text.Replace(Environment.NewLine, String.Empty), Is.EqualTo(labelText));
 
             var inputElement = theElementAsInput.InputElement;
             Assert.That(inputElement, Is.Not.Null);
 
-            var inputElementWebElement = inputElement.GetWebElement(Context.Driver);
+            var inputElementWebElement = inputElement.GetWebElement();
             Assert.That(inputElementWebElement, Is.Not.Null);
 
             var isSelect = inputElementWebElement.TagName.ToLower() == "select";
@@ -160,39 +160,39 @@ namespace WebChauffeur.SpecFlow
         [Then(@"I should see the ""([^""]*)""")]
         public void IShouldSeeThe(string elementName)
         {
-            Assert.That(Context.CurrentPage.FindElementByName(elementName).GetWebElement(Context.Driver), Is.Not.Null);
+            Assert.That(Context.CurrentPage.FindElementByName(elementName).GetWebElement(), Is.Not.Null);
         }
 
         [Then(@"I should not see the ""([^""]*)""")]
         public void ThenIShouldNotSeeThe(string elementName)
         {
-            Assert.Throws<NoSuchElementException>(() => Context.CurrentPage.FindElementByName(elementName).GetWebElement(Context.Driver));
+            Assert.Throws<NoSuchElementException>(() => Context.CurrentPage.FindElementByName(elementName).GetWebElement());
         }
 
         [Given(@"I load the ""([^""]*)"" page")]
         [When(@"I load the ""([^""]*)"" page")]
         public void GivenILoadThePage(string pageName)
         {
-            Context.CurrentPage = Context.Site.LoadPage(Context.Driver, pageName);
+            Context.CurrentPage = Context.Site.LoadPage(pageName);
         }
 
         [Then(@"I should see the ""([^""]*)"" page")]
         public void ThenIShouldSeeThePage(string pageName)
         {
-            Assert.That(Context.Site.GetPage(pageName).VerifyThatBrowserIsOnPage(Context.Driver), Is.True);
+            Assert.That(Context.Site.GetPage(pageName).VerifyThatBrowserIsOnPage(), Is.True);
         }
 
         [Then(@"I should see the browser page title with text([^""]+)""([^""]*)""")]
         public void ThenIShouldSeeTheBrowserPageTitleWithValue(string textComparisonType, string text)
         {
-            var browserTitleText = Context.Driver.Title;
+            var browserTitleText = Driver.GetInstance().Title;
             AssertText(textComparisonType, browserTitleText, text);
         }
 
         [Then(@"I should see the page with text([^""]+)""([^""]*)""")]
         public void ThenIShouldSeeThePageWithText(string textComparisonType, string text)
         {
-            var pageText = Context.Driver.FindElement(By.CssSelector("body")).Text;
+            var pageText = Driver.GetInstance().FindElement(By.CssSelector("body")).Text;
             AssertText(textComparisonType, pageText, text);
         }
 
@@ -200,7 +200,7 @@ namespace WebChauffeur.SpecFlow
         [When(@"I click the ""([^""]*)""")]
         public void WhenIClickTheElement(string elementName)
         {
-            Context.CurrentPage.FindElementByName(elementName).GetWebElement(Context.Driver).Click();
+            Context.CurrentPage.FindElementByName(elementName).GetWebElement().Click();
         }
 
 

@@ -7,8 +7,8 @@ namespace WebChauffeur
     {
         public JavaScriptSelector(string selectorString) : base(selectorString) {}
 
-        public override IWebElement Select(IWebDriver driver) {
-            var javascriptExecutingDriver = (IJavaScriptExecutor) driver;
+        public override IWebElement Select() {
+            var javascriptExecutingDriver = (IJavaScriptExecutor) Driver;
             string javascriptToExecute = String.Format("return {0};", Selector);
             return javascriptExecutingDriver.ExecuteScript(javascriptToExecute) as IWebElement;
         }

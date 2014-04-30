@@ -6,8 +6,8 @@ namespace WebChauffeur
     {
         public XPathSelector(string selectorString) : base(selectorString) {}
 
-        public override IWebElement Select(IWebDriver driver) {
-            return driver.FindElement(By.XPath(Selector));
+        public override IWebElement Select() {
+            return Driver.FindElement(By.XPath(Selector));
         }
     }
 }

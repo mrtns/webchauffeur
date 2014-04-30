@@ -6,8 +6,8 @@ namespace WebChauffeur
     {
         public CssSelector(string selectorString) : base(selectorString) {}
 
-        public override IWebElement Select(IWebDriver driver) {
-            return driver.FindElement(By.CssSelector(Selector));
+        public override IWebElement Select() {
+            return Driver.FindElement(By.CssSelector(Selector));
         }
     }
 }

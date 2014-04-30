@@ -2,6 +2,7 @@
 using GoogleSitePageObjects;
 using OpenQA.Selenium.Firefox;
 using TechTalk.SpecFlow;
+using WebChauffeur;
 
 namespace SpecFlowSpecExample
 {
@@ -10,13 +11,13 @@ namespace SpecFlowSpecExample
     {
         [BeforeScenario]
         public void BeforeScenario() {
-            WebChauffeur.SpecFlow.Context.Driver = new FirefoxDriver();
+            WebChauffeur.Driver.Init();
             WebChauffeur.SpecFlow.Context.Site = new GoogleSite(new Uri("http://google.com"));
         }
 
         [AfterScenario]
         public void AfterScenario() {
-            WebChauffeur.SpecFlow.Context.Driver.Quit();
+            WebChauffeur.Driver.CleanUp();
         }
     }
 }

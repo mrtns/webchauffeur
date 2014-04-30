@@ -11,7 +11,7 @@ namespace NUnitIntegrationTestExample.HomePageTests
         [SetUp]
         public new void Given() {
             base.Given();
-            _homePage = _site.LoadPage(_driver, typeof (HomePage));
+            _homePage = _site.LoadPage(typeof (HomePage));
         }
     }
 }

@@ -9,9 +9,9 @@ namespace WebChauffeur
         public string UrlRelativeToRootOfSite { get; protected set; }
         public Uri UrlOfPageOnSite { get; set; }
 
-        public bool VerifyThatBrowserIsOnPage(IWebDriver driver) {
+        public bool VerifyThatBrowserIsOnPage() {
             var expectedUrlOfPage = UrlOfPageOnSite;
-            var actualBrowserUrl = new Uri(driver.Url);
+            var actualBrowserUrl = new Uri(Driver.Url);
 
             return VerifyUsingAbsolutePathComparison(expectedUrlOfPage, actualBrowserUrl);
         }

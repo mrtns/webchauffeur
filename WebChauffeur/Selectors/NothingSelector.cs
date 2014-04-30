@@ -7,7 +7,7 @@ namespace WebChauffeur
     {
         public NothingSelector() : base(String.Empty) {}
 
-        public override IWebElement Select(IWebDriver driver) {
+        public override IWebElement Select() {
             return null;
         }
     }
